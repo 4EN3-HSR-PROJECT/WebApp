@@ -1,0 +1,93 @@
+<html>
+<head>
+
+<style type="text/css">
+body
+{
+background: url(webappbg.jpg) no-repeat scroll left top;
+background-repeat:no-repeat;
+color:white;
+}
+
+#outer-wrapper 
+{
+width:340px;
+text-align:left;
+font: normal normal 100% Georgia, Serif;
+}
+
+#BusContent
+{
+display:block;
+}
+
+#TaxiContent
+{
+display:none;
+}
+
+#RouteContent
+{
+display:none;
+}
+
+</style>
+
+<link href="MenuStyles.css" rel="stylesheet" type="text/css">
+
+
+<script type="text/javascript">
+	function display(id) {
+		document.getElementById(id).style.display = 'block';
+	}
+	function Notdisplay(id) {
+		document.getElementById(id).style.display = 'none';
+	}
+</script>
+
+
+</head>
+
+<body>
+
+
+<div id='outer-wrapper'>
+
+<div id='cssmenu' style=''>
+<ul>
+   <li><a onclick="display('BusContent');Notdisplay('TaxiContent');Notdisplay('RouteContent'); return false" href='#'><span>Bus</span></a></li>
+   <li><a onclick="display('TaxiContent');Notdisplay('BusContent');Notdisplay('RouteContent'); return false" href='#'><span>Taxi</span></a></li>
+   <li><a onclick="display('RouteContent');Notdisplay('BusContent');Notdisplay('TaxiContent'); return false" href='#'><span>Route</span></a></li>
+   
+</ul>
+</div>
+
+
+<div id='BusContent'>
+STUFF ABOUT BUSES
+<p>This includes getting user info of 
+<p> the route number and stop number
+<p> and shit
+</div>
+
+
+<div id='TaxiContent'>
+STUFF ABOUT Taxi content
+<p>If bus is too late, call taxi
+</div>
+
+
+
+<div id='RouteContent'>
+STUFF ABOUT The route planner
+<p> I don't know how this works;
+<p> recording progress? ( something like that)
+</div>
+
+
+</div>
+
+</body>
+
+
+</html>
