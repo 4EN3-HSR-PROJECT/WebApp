@@ -42,9 +42,14 @@ text-align:left;
 font: normal normal 100% Veranda, Sans-Serif;
 }
 
-#BusContent
+#IntroContent
 {
 display:block;
+}
+
+#BusContent
+{
+display:none;
 }
 
 #TaxiContent
@@ -82,15 +87,21 @@ display:none;
 <div id='menu'>
 	<div id='cssmenu' style='' align="center">
 	<ul>
-	   <li><a onclick="display('BusContent');Notdisplay('TaxiContent');Notdisplay('RouteContent'); return false" href='#'><span>Bus</span></a></li>
-	   <li><a onclick="display('TaxiContent');Notdisplay('BusContent');Notdisplay('RouteContent'); return false" href='#'><span>Taxi</span></a></li>
-	   <li><a onclick="display('RouteContent');Notdisplay('BusContent');Notdisplay('TaxiContent'); return false" href='#'><span>Route</span></a></li>
-	   
+	   <li><a onclick="display('BusContent');Notdisplay('TaxiContent');Notdisplay('RouteContent');Notdisplay('IntroContent'); return false" href='#'><span>Bus</span></a></li>
+	   <li><a onclick="display('TaxiContent');Notdisplay('BusContent');Notdisplay('RouteContent');Notdisplay('IntroContent'); return false" href='#'><span>Taxi</span></a></li>
+	   <li><a onclick="display('RouteContent');Notdisplay('BusContent');Notdisplay('TaxiContent');Notdisplay('IntroContent'); return false" href='#'><span>Route</span></a></li>
 	</ul>
 	</div>
 </div>
 
 <div id='content'>
+	
+	<div id='IntroContent'>
+	<p>Welcome to the HSR Bus Tracker's mobile site. If you are trying to
+	reach the survey, access the site on a computer.
+	</div>
+	
+	
 	<div id='BusContent'>
 	STUFF ABOUT BUSES
 	<p>This is where the bus info will go at the conclusion of the project.
@@ -111,6 +122,7 @@ display:none;
 	STUFF ABOUT The route planner
 	<p>The route planner may or may not be implemented.
 	</div>
+	
 </div> <!--content-->
 
 
