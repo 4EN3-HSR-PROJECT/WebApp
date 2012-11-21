@@ -4,6 +4,66 @@
 	to provide full functionality.
 -->
 
+<script>
+function getDropdown(div,param = "",change = "") {
+	// Initialize page getters
+	var sqlconnect;
+	var dropdown;
+	if (window.XMLHttpRequest) {
+		sqlconnect = new XMLHttpRequest();
+		dropdown = new XMLHttpRequest();
+	} else {
+		sqlconnect = new ActiveXObject("Microsoft.XMLHTTP");
+		dropdown = new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	
+	// Function to be run upon sqlConenctor response
+	var serialArray;
+	sqlconnect.onreadystatechange = function() {
+		if (sqlconnect.readyState == 4 && sqlconnect.status == 200) {
+			// Send request for dropdown
+			serialarray = sqlconnect.responseText;
+			var address = "dropdown.php?array=" + serialarray;
+			if (change != "") {
+				address += "&alter=" + change;
+			}
+			if (param != "") {
+				address += "&" + param;
+			}
+			dropdown.open("GET",address,true);
+			dropdown.send();
+		}
+	}
+	
+	// Function to be run upon dropdown response
+	dropdown.onreadystatechange = function() {
+		if (dropdown.readyState == 4 && dropdown.status == 200) {
+			document.getElementById(div).innerHTML = dropdown.responseText;
+		}
+	}
+	
+	// Send request for sql array
+	if (param == "") {
+		if (div == "bus_stop") {
+			sqlconnect.open("GET","sql/getStops.php",true);
+		} else if (div == "bus_routes") {
+			sqlconnect.open("GET","sql/getRoutes.php",true);
+		}
+	} else {
+		if (div == "bus_stop") {
+			sqlconnect.open("GET","sql/getStops.php?" + param,true);
+		} else if (div == "bus_routes") {
+			sqlconnect.open("GET","sql/getRoutes.php?" + param,true);
+		}
+	}
+	sqlconnect.send();
+}
+</script>
+
+
+
+
+
 <div style="background: url(WebAppBg.jpg) black no-repeat scroll left top; background-size: cover;" id="bus" data-url="bus" data-role="page" data-theme="a">
 <div data-role="header">
 <h1>Find a Bus</h1>
@@ -23,17 +83,26 @@
 
 <div data-role="fieldcontain">
 <label for="sel_tw41"></label>
+
+<div name="bus_stop" id="bus_stop">
 <select name="sel_tw41" id="sel_tw41" data-theme="c">
 <option value="-1">Stop Number</option><option value="1077">1077 - HAMILTON GO CENTRE PLATFORM 17</option><option value="1083">1083 - KING at CAROLINE</option><option value="1092">1092 - JOHN at JACKSON</option><option value="1094">1094 - KING at JOHN</option><option value="1096">1096 - KING at JAMES</option></select>
-</div>
+</div></div>
 
 <div data-role="fieldcontain">
 <label for="sel_tw42"></label>
-<select name="sel_tw42" id="sel_tw42" data-theme="c">
-<option value="Route Number">Route Number</option><option value="5">05 - DELAWARE</option><option value="10">10 - B-LINE EXPRESS</option><option value="51">51 - UNIVERSITY</option></select>
-</div>
+
+<div name="bus_route" id="bus_route">
+<!--select name="sel_tw42" id="sel_tw42" data-theme="c">
+<option value="Route Number">Route Number</option><option value="5">05 - DELAWARE</option><option value="10">10 - B-LINE EXPRESS</option><option value="51">51 - UNIVERSITY</option></select-->
+</div></div>
 
 <input type="submit" value="Check Bus Time"/>
 </form>
+
+<script>
+	//getDropdown("bus_stop","request=stops","bus_route");
+	getDropdown("bus_route","request=routes","bus_stop");
+</script>
 
 </div></div>
