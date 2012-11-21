@@ -5,7 +5,7 @@
 -->
 
 <script>
-function getDropdown(div,queryloc,param = "",change = "") {
+function getDropdown(div,queryloc,param = "") {
 	// Initialize page getters
 	var sqlconnect;
 	var dropdown;
@@ -25,9 +25,6 @@ function getDropdown(div,queryloc,param = "",change = "") {
 			serialarray = sqlconnect.responseText;
 			var address = "dropdown.php";
 			var variables = "array=" + serialarray;
-			if (change != "") {
-				variables += "&alter=" + change;
-			}
 			if (param != "") {
 				variables += "&" + param;
 			}
@@ -77,28 +74,24 @@ function getDropdown(div,queryloc,param = "",change = "") {
 
 <div data-role="fieldcontain">
 <label for="sel_tw41"></label>
-
 <select name="bus_stop" id="bus_stop" data-theme="c">
+	<option value="" style="display:none;">Loading...</option>
 </select>
-<!--select name="sel_tw41" id="sel_tw41" data-theme="c">
-<option value="-1">Stop Number</option><option value="1077">1077 - HAMILTON GO CENTRE PLATFORM 17</option><option value="1083">1083 - KING at CAROLINE</option><option value="1092">1092 - JOHN at JACKSON</option><option value="1094">1094 - KING at JOHN</option><option value="1096">1096 - KING at JAMES</option></select-->
 </div>
 
 <div data-role="fieldcontain">
 <label for="sel_tw42"></label>
-
 <select name="bus_route" id="bus_route" data-theme="c">
+	<option value="" style="display:none;">Loading...</option>
 </select>
-<!--select name="sel_tw42" id="sel_tw42" data-theme="c">
-<option value="Route Number">Route Number</option><option value="5">05 - DELAWARE</option><option value="10">10 - B-LINE EXPRESS</option><option value="51">51 - UNIVERSITY</option></select-->
 </div>
 
 <input type="submit" value="Check Bus Time"/>
 </form>
 
 <script>
-	getDropdown("bus_stop","sql/getStops.php","request=stops","bus_route");
-	getDropdown("bus_route","sql/getRoutes.php","request=routes","bus_stop");
+	getDropdown("bus_stop","sql/getStops.php","request=stops");
+	getDropdown("bus_route","sql/getRoutes.php","request=routes");
 </script>
 
 </div></div>
