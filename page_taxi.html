@@ -1,0 +1,44 @@
+<!--
+	This file is only part of a full html page and is to be
+	included in another page (via php include, etc.) in order
+	to provide full functionality.
+-->
+
+<div id="taxi" data-url="taxi" data-role="page" data-theme="b">
+<div data-role="header">
+<h1>Request a Taxi</h1>
+<div data-role="navbar">
+<ul>
+<li><a href="#bus">Bus</a></li>
+<li><a href="#main">Information</a></li>
+<li><a href="#taxi" class="ui-btn-active">Taxi</a></li>
+</ul>
+</div>
+
+</div>
+
+<div data-role="content">
+
+<form id="form_tw33" method="POST">
+
+<div data-role="fieldcontain">
+<label for="inp_tw35">Name</label>
+<input type="text" name="inp_tw35" id="inp_tw35" />
+</div>
+
+<div data-role="fieldcontain">
+<label for="inp_tw36">Contact Number</label>
+<input type="text" name="inp_tw36" id="inp_tw36" />
+</div>
+
+<div data-role="fieldcontain">
+<label for="inp_tw37">Pickup Location</label>
+<input type="text" name="inp_tw37" id="inp_tw37" />
+</div>
+
+<input type="button" data-theme="c" value="Use GPS"/>
+
+<input type="submit" data-theme="b" value="Submit"/>
+</form>
+
+</div></div>

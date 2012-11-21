@@ -1,0 +1,1 @@
+Bulletin board posts can be posted in this area.

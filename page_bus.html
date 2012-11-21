@@ -1,0 +1,39 @@
+<!--
+	This file is only part of a full html page and is to be
+	included in another page (via php include, etc.) in order
+	to provide full functionality.
+-->
+
+<div id="bus" data-url="bus" data-role="page" data-theme="b">
+<div data-role="header">
+<h1>Find a Bus</h1>
+<div data-role="navbar">
+<ul>
+<li><a href="#bus" class="ui-btn-active">Bus</a></li>
+<li><a href="#main">Information</a></li>
+<li><a href="#taxi">Taxi</a></li>
+</ul>
+</div>
+
+</div>
+
+<div data-role="content">
+
+<form id="form_tw40" method="POST">
+
+<div data-role="fieldcontain">
+<label for="sel_tw41"></label>
+<select name="sel_tw41" id="sel_tw41" data-theme="c">
+<option value="-1">Stop Number</option><option value="1077">1077 - HAMILTON GO CENTRE PLATFORM 17</option><option value="1083">1083 - KING at CAROLINE</option><option value="1092">1092 - JOHN at JACKSON</option><option value="1094">1094 - KING at JOHN</option><option value="1096">1096 - KING at JAMES</option></select>
+</div>
+
+<div data-role="fieldcontain">
+<label for="sel_tw42"></label>
+<select name="sel_tw42" id="sel_tw42" data-theme="c">
+<option value="Route Number">Route Number</option><option value="5">05 - DELAWARE</option><option value="10">10 - B-LINE EXPRESS</option><option value="51">51 - UNIVERSITY</option></select>
+</div>
+
+<input type="submit" value="Check Bus Time"/>
+</form>
+
+</div></div>
