@@ -36,7 +36,26 @@ function getByStop ($stop) {
 	
 	// Formulate queries
 	$getdb = 'use hsr_data';
-	$query = 'SELECT number FROM bus_routes,bus_route_stops WHERE number=route_no AND stop_no=' . $stop . ' ORDER BY number';
+	$query = '
+		SELECT DISTINCT
+			Routes.Route_id,
+			Route_short_name,
+			Route_long_name
+		FROM
+			Routes,
+			Trips,
+			Stop_Times,
+			Stops
+		WHERE
+			Stops.Stop_id = ' . $stop . '
+			AND
+			Stops.Stop_id = Stop_Times.Stop_id
+			AND
+			Stop_Times.Trip_id = Trips.Trip_id
+			AND
+			Trips.Route_id = Routes.Route_id
+		ORDER BY
+			Routes.Route_short_name';
 	
 	// Connect to database
 	include '/var/www/db.php';
@@ -53,7 +72,10 @@ function getByStop ($stop) {
 	
 	// Get results
 	while ($row = mysql_fetch_assoc($result)) {
-		$routes[] = $row['number'];
+		$routes[] = array(
+			'id'     => $row['Route_id'],
+			'number' => $row['Route_short_name'],
+			'name'   => $row['Route_long_name'] );
 	}
 	
 	// Return results
