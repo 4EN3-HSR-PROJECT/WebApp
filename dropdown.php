@@ -31,7 +31,7 @@ if (!isset($_REQUEST['title'])) {
 	$title = $_REQUEST['title'];
 }
 
-$result = dropDown($array,"");
+$result = dropDown($array,$title);
 echo $result;
 
 ?>

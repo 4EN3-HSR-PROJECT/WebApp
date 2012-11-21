@@ -74,14 +74,14 @@ function getDropdown(div,queryloc,param = "") {
 
 <div data-role="fieldcontain">
 <label for="sel_tw41"></label>
-<select name="bus_stop" id="bus_stop" data-theme="c">
+<select name="bus_stop" id="bus_stop" data-theme="c" onchange="getDropdown('bus_route','sql/getRoutes.php','title=Route+Number&stop=' + $('#bus_stop').val())">
 	<option value="" style="display:none;">Loading...</option>
 </select>
 </div>
 
 <div data-role="fieldcontain">
 <label for="sel_tw42"></label>
-<select name="bus_route" id="bus_route" data-theme="c">
+<select name="bus_route" id="bus_route" data-theme="c" onchange="getDropdown('bus_stop','sql/getStops.php','title=Stop+Number&route=' + $('#bus_route').val())">
 	<option value="" style="display:none;">Loading...</option>
 </select>
 </div>
@@ -90,8 +90,8 @@ function getDropdown(div,queryloc,param = "") {
 </form>
 
 <script>
-	getDropdown("bus_stop","sql/getStops.php","request=stops");
-	getDropdown("bus_route","sql/getRoutes.php","request=routes");
+	getDropdown('bus_stop','sql/getStops.php','title=Stop+Number');
+	getDropdown('bus_route','sql/getRoutes.php','title=Route+Number');
 </script>
 
 </div></div>
