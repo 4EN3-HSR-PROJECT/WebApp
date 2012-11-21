@@ -1,0 +1,129 @@
+<html>
+<head>
+
+<!-- BEGIN Mobile-site Tags -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width"> 
+<!-- END Mobile-site Tags -->
+
+<style type="text/css">
+html,body
+{
+margin:0px;
+padding:0px;
+background-color:#333333;
+color:white;
+}
+
+#outer-wrapper 
+{
+width:320px;
+height:100%;
+padding:0px;
+font: normal normal 100% Veranda, Sans-Serif;
+background: url(img/bg.png) repeat-x scroll left top;
+}
+
+#menu
+{
+width:100%;
+height:40px;
+padding:0px;
+text-align:center;
+}
+
+#content
+{
+
+height:100%;
+margin:10px;
+text-align:left;
+font: normal normal 100% Veranda, Sans-Serif;
+}
+
+#IntroContent
+{
+display:block;
+}
+
+#BusContent
+{
+display:none;
+}
+
+#TaxiContent
+{
+display:none;
+}
+
+#RouteContent
+{
+display:none;
+}
+
+</style>
+
+<link href="MenuStyles.css" rel="stylesheet" type="text/css">
+
+
+<script type="text/javascript">
+	function display(id) {
+		hide(BusContent);
+		hide(TaxiContent);
+		hide(Bulletin);
+		document.getElementById(id).style.display = 'block';
+	}
+	function hide(id) {
+		document.getElementById(id).style.display = 'none';
+	}
+</script>
+
+
+</head>
+
+<body>
+
+
+<div id='outer-wrapper'>
+
+<div id='menu'>
+	<div id='cssmenu' style='' align="center">
+	<ul>
+	   <li><a onclick="display('BusContent');Notdisplay('TaxiContent');Notdisplay('IntroContent'); return false" href='#'><span>Bus</span></a></li>
+	   <li><a onclick="display('TaxiContent');Notdisplay('BusContent');Notdisplay('IntroContent'); return false" href='#'><span>Taxi</span></a></li>
+	   <li><a onclick="display('TaxiContent');Notdisplay('BusContent');Notdisplay('IntroContent'); return false" href='#'><span>Bulletin</span></a></li>
+	</ul>
+	</div>
+</div>
+
+<div id='content'>
+	
+	<div id='IntroContent'>
+	<p>Welcome to the HSR Bus Tracker's mobile site. If you are trying to
+	reach the survey, access the site on a computer.
+	</div>
+	
+	
+	<div id='BusContent'>
+	STUFF ABOUT BUSES
+	<p>This is where the bus info will go at the conclusion of the project.
+	   This will ask for a bus stop number and bus number, and will track
+	   the bus in real time.
+	</div>
+
+
+	<div id='TaxiContent'>
+	STUFF ABOUT Taxi content
+	<p>If it's late and no buses are around, you can summon a taxi to your
+	   location.
+	</div>
+	
+</div> <!--content-->
+
+
+</div> <!--outer-wrapper-->
+
+</body>
+
+</html>

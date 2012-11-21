@@ -1,8 +1,12 @@
+#cssmenu
+{
+  background-image: 'img/menubar/bg_blur.png';
+}
+
 #cssmenu ul,
 #cssmenu li,
 #cssmenu span,
 #cssmenu a {
-  background-image: 'img/menubar/bg_blur.png';
   margin: 0;
   padding: 0;
   position: relative;
