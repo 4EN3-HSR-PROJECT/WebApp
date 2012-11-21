@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<div style="background: url(WebAppBg.jpg) black no-repeat scroll center top; background-size: cover;" id="main" data-url="main" data-role="page" data-theme="a">
+<div style="background: url(WebAppBg.jpg) black no-repeat scroll left top; background-size: cover;" id="main" data-url="main" data-role="page" data-theme="a">
 <div data-role="header">
 <h1>HSR Tracker</h1>
 <div data-role="navbar">
