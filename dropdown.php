@@ -4,26 +4,19 @@
  * Array should be split into the following format:
  *   ['val']		- the value of the entry when selected
  *   ['display']	- the info displayed in the dropdown
+ * Array must be serialized and base64-encoded.
  */
 
-function dropDown($array, $title = "", $alter = "") {
+function dropDown($array, $title = "") {
 	$output = '';
-	/*$id = mt_rand();
-	$output = '<select name=' . $id . ' id=' . $id . ' data-theme="c"';
-	if ($alter != '') {
-		$output .= ' onchange="getDropdown(\'' . $alter . '\',\'request=' . $alter . '&arg=\' + $(\'#' . $id . '\').val())"';
-	}
-	if (empty($array)) {
-		$output .= ' disabled';
-	}
-	$output .= '>';*/
-	$output .= '<option value="" style="display:none;"></option>';
+	$output .= '<option value="" style="display:none;">';
+	$output .= $title;
+	$output .= '</option>';
 	foreach ($array as $element) {
 		$output .= '<option value="' . $element['val'] . '">';
 		$output .= $element['display'];
 		$output .= '</option>';
 	}
-	//$output .= '</select>';
 	return $output;
 }
 
@@ -32,13 +25,13 @@ if (!isset($_REQUEST['array'])) {
 	die('Array not set');
 }
 $array = unserialize(base64_decode($_REQUEST['array']));
-if (!isset($_REQUEST['alter'])) {
-	$alter = "";
+if (!isset($_REQUEST['title'])) {
+	$title = "";
 } else {
-	$alter = $_REQUEST['alter'];
+	$title = $_REQUEST['title'];
 }
 
-$result = dropDown($array,"",$alter);
+$result = dropDown($array,"");
 echo $result;
 
 ?>
