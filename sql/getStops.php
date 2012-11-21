@@ -10,9 +10,9 @@ function getAll () {
 			Stop_code,
 			Stop_name
 		FROM
-			bus_stops
+			Stops
 		ORDER BY
-			number';
+			Stop_code';
 	
 	// Connect to database
 	include '/var/www/db.php';
@@ -105,14 +105,14 @@ function getByRoute ($route) {
 	if (isset($_REQUEST['standalone'])) {
 		print_r (getByRoute($_REQUEST['route']));
 	} else {
-		echo serialize(getByRoute($_REQUEST['route']));
+		echo base64_encode(serialize(getByRoute($_REQUEST['route'])));
 	}
 // Get all stops
 } else {
 	if (isset($_REQUEST['standalone'])) {
 		print_r (getAll());
 	} else {
-		echo serialize(getAll());
+		echo base64_encode(serialize(getAll()));
 	}
 }
 

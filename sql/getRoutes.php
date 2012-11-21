@@ -104,14 +104,14 @@ function getByStop ($stop) {
 	if (isset($_REQUEST['standalone'])) {
 		print_r (getByStop($_REQUEST['stop']));
 	} else {
-		echo serialize(getByStop($_REQUEST['stop']));
+		echo base64_encode(serialize(getByStop($_REQUEST['stop'])));
 	}
 // Get all stops
 } else {
 	if (isset($_REQUEST['standalone'])) {
 		print_r (getAll());
 	} else {
-		echo serialize(getAll());
+		echo base64_encode(serialize(getAll()));
 	}
 }
 
