@@ -1,5 +1,11 @@
 <?php
 
+/*
+ * Array should be split into the following format:
+ *   ['val']		- the value of the entry when selected
+ *   ['display']	- the info displayed in the dropdown
+ */
+
 function dropDown($array, $alter = "") {
 	$id = mt_rand();
 	$output = '<select name=' . $id . ' id=' . $id . ' data-theme="c"';
@@ -12,8 +18,8 @@ function dropDown($array, $alter = "") {
 	$output .= '>';
 	$output .= '<option value="" style="display:none;"></option>';
 	foreach ($array as $element) {
-		$output .= '<option value="' . $element . '">';
-		$output .= $element;
+		$output .= '<option value="' . $element['val'] . '">';
+		$output .= $element['display'];
 		$output .= '</option>';
 	}
 	$output .= '</select>';
@@ -21,14 +27,14 @@ function dropDown($array, $alter = "") {
 }
 
 
-if (!isset($_GET['array'])) {
+if (!isset($_REQUEST['array'])) {
 	die('Array not set');
 }
-$array = unserialize($_GET['array']);
-if (!isset($_GET['alter'])) {
+$array = unserialize($_REQUEST['array']);
+if (!isset($_REQUEST['alter'])) {
 	$alter = "";
 } else {
-	$alter = $_GET['alter'];
+	$alter = $_REQUEST['alter'];
 }
 
 $result = dropDown($array,$alter);

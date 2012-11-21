@@ -4,7 +4,15 @@ function getAll () {
 	
 	// Formulate queries
 	$getdb = 'use hsr_data';
-	$query = 'SELECT Route_id, Route_short_name, Route_long_name FROM Routes ORDER BY Route_short_name';
+	$query = '
+		SELECT
+			Route_id,
+			Route_short_name,
+			Route_long_name
+		FROM
+			Routes
+		ORDER BY
+			Route_short_name';
 	
 	// Connect to database
 	include '/var/www/db.php';
@@ -22,9 +30,11 @@ function getAll () {
 	// Get results
 	while ($row = mysql_fetch_assoc($result)) {
 		$routes[] = array(
-			'id'     => $row['Route_id'],
-			'number' => $row['Route_short_name'],
-			'name'   => $row['Route_long_name'] );
+			'val'		=> 	$row['Route_id'],
+			'display'	=>	$row['Route_short_name']
+						.	' - '
+						.	$row['Route_long_name']
+			);
 	}
 	
 	// Return results
@@ -73,9 +83,11 @@ function getByStop ($stop) {
 	// Get results
 	while ($row = mysql_fetch_assoc($result)) {
 		$routes[] = array(
-			'id'     => $row['Route_id'],
-			'number' => $row['Route_short_name'],
-			'name'   => $row['Route_long_name'] );
+			'val'		=> 	$row['Route_id'],
+			'display'	=>	$row['Route_short_name']
+						.	' - '
+						.	$row['Route_long_name']
+			);
 	}
 	
 	// Return results

@@ -5,7 +5,7 @@
 -->
 
 <script>
-function getDropdown(div,param = "",change = "") {
+function getDropdown(div,queryloc,param = "",change = "") {
 	// Initialize page getters
 	var sqlconnect;
 	var dropdown;
@@ -23,15 +23,17 @@ function getDropdown(div,param = "",change = "") {
 		if (sqlconnect.readyState == 4 && sqlconnect.status == 200) {
 			// Send request for dropdown
 			serialarray = sqlconnect.responseText;
-			var address = "dropdown.php?array=" + serialarray;
+			var address = "dropdown.php";
+			var variables = "array=" + serialarray;
 			if (change != "") {
-				address += "&alter=" + change;
+				variables += "&alter=" + change;
 			}
 			if (param != "") {
-				address += "&" + param;
+				variables += "&" + param;
 			}
-			dropdown.open("GET",address,true);
-			dropdown.send();
+			dropdown.open("POST",address,true);
+			dropdown.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+			dropdown.send(variables);
 		}
 	}
 	
@@ -44,17 +46,9 @@ function getDropdown(div,param = "",change = "") {
 	
 	// Send request for sql array
 	if (param == "") {
-		if (div == "bus_stop") {
-			sqlconnect.open("GET","sql/getStops.php",true);
-		} else if (div == "bus_routes") {
-			sqlconnect.open("GET","sql/getRoutes.php",true);
-		}
+		sqlconnect.open("GET",queryloc,true);
 	} else {
-		if (div == "bus_stop") {
-			sqlconnect.open("GET","sql/getStops.php?" + param,true);
-		} else if (div == "bus_routes") {
-			sqlconnect.open("GET","sql/getRoutes.php?" + param,true);
-		}
+		sqlconnect.open("GET",queryloc + "?" + param,true);
 	}
 	sqlconnect.send();
 }
@@ -85,8 +79,8 @@ function getDropdown(div,param = "",change = "") {
 <label for="sel_tw41"></label>
 
 <div name="bus_stop" id="bus_stop">
-<select name="sel_tw41" id="sel_tw41" data-theme="c">
-<option value="-1">Stop Number</option><option value="1077">1077 - HAMILTON GO CENTRE PLATFORM 17</option><option value="1083">1083 - KING at CAROLINE</option><option value="1092">1092 - JOHN at JACKSON</option><option value="1094">1094 - KING at JOHN</option><option value="1096">1096 - KING at JAMES</option></select>
+<!--select name="sel_tw41" id="sel_tw41" data-theme="c">
+<option value="-1">Stop Number</option><option value="1077">1077 - HAMILTON GO CENTRE PLATFORM 17</option><option value="1083">1083 - KING at CAROLINE</option><option value="1092">1092 - JOHN at JACKSON</option><option value="1094">1094 - KING at JOHN</option><option value="1096">1096 - KING at JAMES</option></select-->
 </div></div>
 
 <div data-role="fieldcontain">
@@ -101,8 +95,8 @@ function getDropdown(div,param = "",change = "") {
 </form>
 
 <script>
-	//getDropdown("bus_stop","request=stops","bus_route");
-	getDropdown("bus_route","request=routes","bus_stop");
+	getDropdown("bus_stop","sql/getStops.php","request=stops","bus_route");
+	getDropdown("bus_route","sql/getRoutes.php","request=routes","bus_stop");
 </script>
 
 </div></div>

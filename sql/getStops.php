@@ -4,7 +4,15 @@ function getAll () {
 
 	// Formulate queries
 	$getdb = 'use hsr_data';
-	$query = 'SELECT number FROM bus_stops ORDER BY number';
+	$query = '
+		SELECT
+			Stop_id,
+			Stop_code,
+			Stop_name
+		FROM
+			bus_stops
+		ORDER BY
+			number';
 	
 	// Connect to database
 	include '/var/www/db.php';
@@ -21,7 +29,12 @@ function getAll () {
 	
 	// Get results
 	while ($row = mysql_fetch_assoc($result)) {
-		$stops[] = $row['number'];
+		$stops[] = array(
+			'val'		=> 	$row['Stop_id'],
+			'display'	=>	$row['Stop_code']
+						.	' - '
+						.	$row['Stop_name']
+			);
 	}
 	
 	// Return results
@@ -33,7 +46,27 @@ function getByRoute ($route) {
 
 	// Formulate queries
 	$getdb = 'use hsr_data';
-	$query = 'SELECT number FROM bus_stops,bus_route_stops WHERE number=stop_no AND route_no="' . $route . '" ORDER BY number';
+	$query = '
+		SELECT DISTINCT
+			Stops.Stop_id,
+			Stop_code,
+			Stop_name
+		FROM
+			Routes,
+			Trips,
+			Stop_Times,
+			Stops
+		WHERE
+			Routes.Route_id = ' . $route . '
+			AND
+			Routes.Route_id = Trips.Route_id
+			AND
+			Trips.Trip_id = Stop_Times.Trip_id
+			AND
+			Stop_Times.Stop_id = Stops.Stop_id
+			
+		ORDER BY
+			Stop_code';
 	
 	// Connect to database
 	include '/var/www/db.php';
@@ -50,7 +83,12 @@ function getByRoute ($route) {
 	
 	// Get results
 	while ($row = mysql_fetch_assoc($result)) {
-		$stops[] = $row['number'];
+		$stops[] = array(
+			'val'		=> 	$row['Stop_id'],
+			'display'	=>	$row['Stop_code']
+						.	' - '
+						.	$row['Stop_name']
+			);
 	}
 	
 	// Return results
