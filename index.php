@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css">
 <script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+<script src="dropdown.js"></script>
 <link rel="stylesheet" href="jquery.mobile-1.1.0.custom.css?" />
 
 
@@ -20,7 +21,7 @@
           for(var h in msg) {
             stringBuilder += '<input type="text" name="' + h + '" value="' + msg[h] + '" />';
           }
-          return stringBuilder +  '</form>';
+          return stringBuilder + '</form>';
         };
 
         iosocket.on('connect', function() {
@@ -158,7 +159,9 @@
     </script>
 
 </head>
-<body>
+
+
+<body onload="getDropdown('bus_stop','sql/getStops.php','title=Stop+Number'); getDropdown('bus_route','sql/getRoutes.php','title=Route+Number');">
 
 <div style="background: url(WebAppBg.jpg) black no-repeat scroll center top;background-size: cover;" id="main" data-url="main" data-role="page" data-theme="a">
 <div data-role="header">
