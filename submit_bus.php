@@ -69,11 +69,14 @@ if (!$result) {
 }
 
 // Get results
-$stops[] = array();
 while ($row = mysql_fetch_assoc($result)) {
 	$stops[] = $row;
 }
 
-print_r($stops);
+if (isset($stops)) {
+	print_r($stops);
+} else {
+	echo "No results found!"
+}
 
 ?>
