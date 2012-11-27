@@ -13,7 +13,7 @@ if (strlen($stop) != 4) {
 }
 
 // Check that stop code is an integer
-if (!is_numeric($stop) || strpos($stop,"e") || strpos($stop,"E") || strpos($stop,".") ) {
+if (!is_numeric($stop) || strpos($stop,"e") !== false || strpos($stop,"E") !== false || strpos($stop,".") !== false ) {
 	die("ERROR:Invalid stop code format! Please ensure that the stop code contains only numbers.");
 }
 
@@ -69,6 +69,7 @@ if (!$result) {
 }
 
 // Get results
+$stops[] = array();
 while ($row = mysql_fetch_assoc($result)) {
 	$stops[] = $row;
 }
