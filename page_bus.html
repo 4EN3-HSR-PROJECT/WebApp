@@ -20,28 +20,14 @@
 
 <div data-role="content">
 
-<form id="form_tw40" method="POST">
+<form id="form_bus" method="POST">
 
 <div data-role="fieldcontain">
-<label for="sel_tw41"></label>
-<select name="bus_stop" id="bus_stop" data-theme="c" onchange="getDropdown('bus_route','sql/getRoutes.php','title=Route+Number&stop=' + $('#bus_stop').val())">
-	<option value="" style="display:none;">Loading...</option>
-</select>
+	<label for="stop" class="ui-hidden-accessible">Stop Number:</label>
+	<input type="text" class="required" minlength="4" maxlength="4" name="stop" id="stop" placeholder="Stop Number" />
 </div>
 
-<div data-role="fieldcontain">
-<label for="sel_tw42"></label>
-<select name="bus_route" id="bus_route" data-theme="c" onchange="getDropdown('bus_stop','sql/getStops.php','title=Stop+Number&route=' + $('#bus_route').val())">
-	<option value="" style="display:none;">Loading...</option>
-</select>
-</div>
-
-<input type="submit" value="Check Bus Time"/>
+<input type="submit" value="Find Buses"/>
 </form>
-
-<script>
-	getDropdown('bus_stop','sql/getStops.php','title=Stop+Number');
-	getDropdown('bus_route','sql/getRoutes.php','title=Route+Number');
-</script>
 
 </div></div>
