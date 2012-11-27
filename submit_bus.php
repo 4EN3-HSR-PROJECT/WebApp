@@ -76,7 +76,7 @@ while ($row = mysql_fetch_assoc($result)) {
 if (isset($stops)) {
 	print_r($stops);
 } else {
-	echo "No results found!"
+	echo "No results found!";
 }
 
 ?>
