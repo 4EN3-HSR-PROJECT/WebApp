@@ -11,6 +11,15 @@ $(document).on("pageshow", "#statPage", function() {
 				success: function(results) {
 					submitState(true);
 					$.mobile.hidePageLoadingMsg();
+					if (results.substr(0,6) == "ERROR:") {
+						// Error in results
+						$('#bus_list_error').html("<li>" + results.substr(6) + "</li>");
+						$('#bus_popup_error').popup("open");
+					} else {
+						// Good results - create and show list
+						listBusResults("#",results);
+						$('#bus_popup').popup("open");
+					}
 				},
 				error: function(e){  
 					$.mobile.hidePageLoadingMsg();
@@ -21,6 +30,14 @@ $(document).on("pageshow", "#statPage", function() {
 	});
 
 });
+
+function listBusResults (div, json) {
+	var results = jQuery.parseJSON(json);
+	for (entry in results) {
+		$(div)
+	}
+	$(div).listview('refresh');
+}
 
 function submitState (submitted) {
 		   var removeClasses = 'ui-bar-a ui-bar-b ui-bar-c ui-bar-d ui-bar-e ui-btn-up-a ui-btn-up-b ui-btn-up-c ui-btn-up-d ui-btn-up-e';
