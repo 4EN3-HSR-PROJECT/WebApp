@@ -1,7 +1,7 @@
 $(document).on("pageshow", "#statPage", function() {
 
 	$("#form_bus").validate({
-			submitHandler: function(form) {
+		submitHandler: function(form) {
 			$.mobile.showPageLoadingMsg();
 			$args = "stop="+$('#stop').val();
 			jQuery.ajax({
@@ -13,8 +13,8 @@ $(document).on("pageshow", "#statPage", function() {
 					$.mobile.hidePageLoadingMsg();
 					if (results.substr(0,6) == "ERROR:") {
 						// Error in results
-						$('#bus_list_error').html("<li>" + results.substr(6) + "</li>");
-						$('#bus_popup_error').popup("open");
+						listError('#bus_list', results.substr(6));
+						$('#bus_popup').popup("open");
 					} else {
 						// Good results - create and show list
 						listBusResults("#",results);
@@ -33,9 +33,22 @@ $(document).on("pageshow", "#statPage", function() {
 
 function listBusResults (div, json) {
 	var results = jQuery.parseJSON(json);
+	$(div).html("");
+	var str = '';
 	for (entry in results) {
-		$(div)
+		str += '<li>';
+		str += '<h3>' + entry['Route_short_name'] + ' - ' + entry['Route_long_name'] + '</h3>';
+		str += '<p>Arrival at: ' + entry['Arrival_time'] + '</p>';
+		str += '</li>';
 	}
+	$(div).html(str);
+	$(div).listview('refresh');
+}
+
+function listError (div, reason) {
+	var str = '<li data-role="divider">Error</li>';
+	str += '<li>' + reason + '</li>';
+	$(div).html(str);
 	$(div).listview('refresh');
 }
 
