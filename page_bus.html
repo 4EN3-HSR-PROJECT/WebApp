@@ -20,14 +20,42 @@
 
 <div data-role="content">
 
-<form id="form_bus" method="POST">
+<!--form id="form_bus" method="POST" action="submit_bus.php"-->
+<form data-ajax="true" name="form_bus" action="" method="POST" id="form_bus">
 
 <div data-role="fieldcontain">
 	<label for="stop" class="ui-hidden-accessible">Stop Number:</label>
 	<input type="text" class="required" minlength="4" maxlength="4" name="stop" id="stop" placeholder="Stop Number" />
 </div>
 
-<input type="submit" value="Find Buses"/>
+<input type="submit" name="bus_submit" id="bus_submit" value="Find Buses"/>
 </form>
 
-</div></div>
+</div>
+
+
+<div data-role="popup" name="bus_popup" id="bus_popup">
+	<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+	<div data-role="header">
+		<h1>Upcoming Buses</h1>
+	</div>
+	<ul data-role="listview">
+		<!-- bus results go here -->
+	</ul>
+</div>
+
+
+<div data-role="popup" name="bus_popup_error" id="bus_popup_error">
+	<a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+	<div data-role="header">
+		<h1>Error</h1>
+	</div>
+	<ul data-role="listview">
+		<!-- reason for error goes here -->
+	</ul>
+</div>
+
+
+
+
+</div>

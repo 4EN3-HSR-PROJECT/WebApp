@@ -9,12 +9,14 @@ $stop = (isset($_POST['stop']))
 
 // Ensure that stop code is of sufficient length
 if (strlen($stop) != 4) {
-	die("ERROR:Invalid stop code length! Please ensure the code is 4 numbers in length.");
+	$results = (isset($results)) ? $results : "ERROR:Invalid stop code length! Please ensure the code is 4 numbers in length.";
+	die();
 }
 
 // Check that stop code is an integer
 if (!is_numeric($stop) || strpos($stop,"-") !== false || strpos($stop,"e") !== false || strpos($stop,"E") !== false || strpos($stop,".") !== false ) {
-	die("ERROR:Invalid stop code format! Please ensure that the stop code contains only numbers.");
+	$results = (isset($results)) ? $results : "ERROR:Invalid stop code format! Please ensure that the stop code contains only numbers.";
+	die();
 }
 
 // Get bus service ID based on date
@@ -36,7 +38,8 @@ $query = "
 	SELECT DISTINCT
 		Route_Long_name,
 		Route_Short_name,
-		Trip_id, Stop_code,
+		Trip_id,
+		Stop_code,
 		Arrival_time,
 		Departure_time,
 		Shape_id
@@ -59,12 +62,14 @@ $query = "
 include '/var/www/db.php';
 $connected = mysql_query($getdb);
 if (!$connected) {
+	$results = (isset($results)) ? $results : "ERROR:System is currently offline! Please try again later.";
 	die('Could not connect to database: ' . mysql_error());
 }
 
 // Perform main query
 $result = mysql_query($query);
 if (!$result) {
+	$results = (isset($results)) ? $results : "ERROR:An error has occurred! Please try again later.";
 	die('Could not run query: ' . mysql_error());
 }
 
@@ -73,10 +78,11 @@ while ($row = mysql_fetch_assoc($result)) {
 	$stops[] = $row;
 }
 
+// Output final results
 if (isset($stops)) {
-	print_r($stops);
+	$results = json_encode($stops);
 } else {
-	echo "No results found!";
+	$results = (isset($results)) ? $results : "ERROR:No buses found!";
 }
 
 ?>
