@@ -28,6 +28,13 @@
 	<input type="text" class="required" minlength="4" maxlength="4" name="stop" id="stop" placeholder="Stop Number" />
 </div>
 
+<fieldset data-role="controlgroup" data-type="horizontal">
+	<input type="radio" name="bus_sort" id="bus_sort-route" value="1" checked />
+	<label for="bus_sort-route">By Route</label>
+	<input type="radio" name="bus_sort" id="bus_sort-time" value="0" />
+	<label for="bus_sort-time">By Time</label>
+</fieldset>
+
 <input type="submit" name="bus_submit" id="bus_submit" value="Find Buses"/>
 </form>
 
@@ -35,24 +42,17 @@
 
 <ul data-role="listview" data-inset="true" name="bus_list" id="bus_list">
 	<!-- Results go here -->
-	<li>
-		Entry #2
-	</li>
-	<li>
-		Entry #2
-	</li>
+	<li data-role="list-divider">5 - DELAWARE</li>
+	<li>10:35am</li>
+	<li>11:05am</li>
+	<li>11:35am</li>
+	<li data-role="list-divider">10 - B-LINE EXPRESS</li>
+	<li>10:50am</li>
+	<li>11:10am</li>
+	<li>11:30am</li>
 </ul>
 
 
-</div>
-
-
-
-
-<div data-role="popup" name="bus_popup" id="bus_popup">
-	<ul data-role="listview" data-inset="true" name="bus_list" id="bus_list">
-		<li data-role="divider">Results</li>
-	</ul>
 </div>
 
 

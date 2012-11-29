@@ -1,7 +1,8 @@
 <?php
 
-// Get stop code entered by user
-$stop = (isset($_REQUEST['stop'])) ? $_REQUEST['stop'] : "";
+// Get submitted variables
+$stop   = (isset($_REQUEST['stop']))   ? $_REQUEST['stop']   : "";
+$bytime = (isset($_REQUEST['bytime'])) ? (bool)$_REQUEST['bytime'] : false;
 
 // Ensure that stop code is of sufficient length
 if (strlen($stop) != 4) {
@@ -27,7 +28,7 @@ switch (intval(date('N'))) {
 		$sid = '1_merged_801259';
 		break;
 }
-if (isset($_REQUEST['bytime'])) {
+if ($bytime) {
 	$group1 = "Arrival_time";
 	$group2 = "Route_Short_name";
 } else {
