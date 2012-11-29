@@ -55,8 +55,6 @@ $query = "
 	GROUP BY
 		Route_Short_name,
 		Arrival_time
-	ORDER BY
-		Arrival_time
 ";
 
 // Connect to database
@@ -79,7 +77,7 @@ $max_count = 3;
 while ($row = mysql_fetch_assoc($result)) {
 	// Only add up to $max_count entires per route
 	$count[$row['Route_short_name']] = (isset($count[$row['Route_short_name']])) ? $count[$row['Route_short_name']] + 1 : 1;
-	if ($count <= $max_count) {
+	if ($count[$row['Route_short_name']] <= $max_count) {
 		$stops[] = $row;
 	}
 }
@@ -89,6 +87,10 @@ if (isset($stops)) {
 	$results = json_encode($stops);
 } else {
 	$results = (isset($results)) ? $results : "ERROR:No buses found!";
+}
+
+if (isset($_GET['echo'])) {
+	print_r($results);
 }
 
 ?>
