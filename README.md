@@ -5,10 +5,10 @@ for McMaster Computer Science 4EN3.
 
 **Accessible at:**
 
-* [web root]/hsrproject/WebApp
+* danesh.it.cx/hsrproject/WebApp
 * m.hsrtracker.com
 
 **Redirected from:**
 
-* [web root]/hsrproject
+* danesh.it.cx/hsrproject
 * hsrtracker.com
