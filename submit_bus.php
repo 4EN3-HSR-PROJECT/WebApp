@@ -1,11 +1,12 @@
 <?php
 
 // Get stop code entered by user
-$stop = (isset($_POST['stop']))
+/*$stop = (isset($_POST['stop']))
 ?	$_POST['stop']
 :	(isset($_GET['stop']))
 	?	$_GET['stop']
-	:	"";
+	:	"";*/
+$stop = (isset($_REQUEST['stop'])) ? $_REQUEST['stop'] : "";
 
 // Ensure that stop code is of sufficient length
 if (strlen($stop) != 4) {
