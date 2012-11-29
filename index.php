@@ -39,7 +39,7 @@ Is your bus running late? Request a taxi to pick you up without making a single 
 </div></div>
 
 <?php include 'page_bus.html' ?>
-<!--?php include 'page_taxi.html' ?-->
+<?php include 'page_taxi.html' ?>
 
 </body>
 </html>
