@@ -2,17 +2,17 @@
 
 // Get submitted variables
 $stop   = (isset($_REQUEST['stop']))   ? $_REQUEST['stop']   : "";
-$bytime = (isset($_REQUEST['bytime'])) ? (bool)$_REQUEST['bytime'] : false;
+$bytime = (isset($_REQUEST['bytime'])) ? $_REQUEST['bytime'] : 0;
 
 // Ensure that stop code is of sufficient length
 if (strlen($stop) != 4) {
-	$results = (isset($results)) ? $results : "ERROR:Invalid stop code length! Please ensure the code is 4 numbers in length.";
+	$result = (isset($result)) ? $result : "ERROR:Invalid stop code length! Please ensure the code is 4 numbers in length.";
 	die();
 }
 
 // Check that stop code is an integer
 if (!is_numeric($stop) || strpos($stop,"-") !== false || strpos($stop,"e") !== false || strpos($stop,"E") !== false || strpos($stop,".") !== false ) {
-	$results = (isset($results)) ? $results : "ERROR:Invalid stop code format! Please ensure that the stop code contains only numbers.";
+	$result = (isset($result)) ? $result : "ERROR:Invalid stop code format! Please ensure that the stop code contains only numbers.";
 	die();
 }
 
@@ -28,7 +28,7 @@ switch (intval(date('N'))) {
 		$sid = '1_merged_801259';
 		break;
 }
-if ($bytime) {
+if ($bytime == 1) {
 	$group1 = "Arrival_time";
 	$group2 = "Route_Short_name";
 } else {
@@ -64,14 +64,14 @@ $query = "
 include '/var/www/db.php';
 $connected = mysql_query($getdb);
 if (!$connected) {
-	$results = (isset($results)) ? $results : "ERROR:System is currently offline! Please try again later.";
+	$result = (isset($result)) ? $result : "ERROR:System is currently offline! Please try again later.";
 	die('Could not connect to database: ' . mysql_error());
 }
 
 // Perform main query
 $result = mysql_query($query);
 if (!$result) {
-	$results = (isset($results)) ? $results : "ERROR:An error has occurred! Please try again later.";
+	$result = (isset($result)) ? $result : "ERROR:An error has occurred! Please try again later.";
 	die('Could not run query: ' . mysql_error());
 }
 
@@ -87,13 +87,15 @@ while ($row = mysql_fetch_assoc($result)) {
 
 // Output final results
 if (isset($stops)) {
-	$results = json_encode($stops);
+	$result = json_encode($stops);
 } else {
-	$results = (isset($results)) ? $results : "ERROR:No buses found!";
+	$result = (isset($result)) ? $result : "ERROR:No buses found!";
 }
 
 if (isset($_GET['echo'])) {
-	print_r($results);
+	print_r($result);
 }
+
+echo $result;
 
 ?>

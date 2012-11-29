@@ -21,7 +21,7 @@
 
 <div data-role="content">
 
-<form data-ajax="true" name="form_bus" action="" method="POST" id="form_bus">
+<form data-ajax="true" name="bus_form" action="" method="POST" id="bus_form">
 
 <div data-role="fieldcontain">
 	<label for="stop" class="ui-hidden-accessible">Stop Number:</label>
@@ -29,9 +29,9 @@
 </div>
 
 <fieldset data-role="controlgroup" data-type="horizontal">
-	<input type="radio" name="bus_sort" id="bus_sort-route" value="1" checked />
+	<input type="radio" name="bus_sort" id="bus_sort-route" value="0" checked />
 	<label for="bus_sort-route">By Route</label>
-	<input type="radio" name="bus_sort" id="bus_sort-time" value="0" />
+	<input type="radio" name="bus_sort" id="bus_sort-time" value="1" />
 	<label for="bus_sort-time">By Time</label>
 </fieldset>
 
@@ -41,15 +41,7 @@
 
 
 <ul data-role="listview" data-inset="true" name="bus_list" id="bus_list">
-	<!-- Results go here -->
-	<li data-role="list-divider">5 - DELAWARE</li>
-	<li>10:35am</li>
-	<li>11:05am</li>
-	<li>11:35am</li>
-	<li data-role="list-divider">10 - B-LINE EXPRESS</li>
-	<li>10:50am</li>
-	<li>11:10am</li>
-	<li>11:30am</li>
+	<!-- Results -->
 </ul>
 
 
