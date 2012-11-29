@@ -77,9 +77,9 @@ if (!$result) {
 $max_count = 3;
 while ($row = mysql_fetch_assoc($result)) {
 	// Only add up to $max_count entires per route
-	if (!isset($count[$row['Route_short_name']]) || $count[$row['Route_short_name']] < $max_count) {
+	$count[$row['Route_short_name']] = (isset($count[$row['Route_short_name']])) ? $count[$row['Route_short_name']] + 1 : 1;
+	if ($count <= $max_count) {
 		$stops[] = $row;
-		$count[$row['Route_short_name']] = (isset($count[$row['Route_short_name']])) ? $count[$row['Route_short_name']] + 1 : 1;
 	}
 }
 
