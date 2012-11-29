@@ -1,11 +1,6 @@
 <?php
 
 // Get stop code entered by user
-/*$stop = (isset($_POST['stop']))
-?	$_POST['stop']
-:	(isset($_GET['stop']))
-	?	$_GET['stop']
-	:	"";*/
 $stop = (isset($_REQUEST['stop'])) ? $_REQUEST['stop'] : "";
 
 // Ensure that stop code is of sufficient length
@@ -20,7 +15,7 @@ if (!is_numeric($stop) || strpos($stop,"-") !== false || strpos($stop,"e") !== f
 	die();
 }
 
-// Get bus service ID based on date
+// Set query variables
 switch (intval(date('N'))) {
 	case 6: // Saturday
 		$sid = '2_merged_801261';
@@ -31,6 +26,13 @@ switch (intval(date('N'))) {
 	default: // Weekday (Monday - Friday)
 		$sid = '1_merged_801259';
 		break;
+}
+if (isset($_REQUEST['bytime'])) {
+	$group1 = "Arrival_time";
+	$group2 = "Route_Short_name";
+} else {
+	$group1 = "Route_Short_name";
+	$group2 = "Arrival_time";
 }
 
 // Formulate queries
@@ -53,8 +55,8 @@ $query = "
 		AND	service_id = '$sid'
 		) 
 	GROUP BY
-		Route_Short_name,
-		Arrival_time
+		$group1,
+		$group2
 ";
 
 // Connect to database
