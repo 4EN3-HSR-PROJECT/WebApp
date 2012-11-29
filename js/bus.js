@@ -4,13 +4,15 @@ $(document).on("pageshow", "#bus", function() {
 			//$('#bus_popup').popup();
 			$.mobile.showPageLoadingMsg();
 			$args  =  "stop="+$('#stop').val();
-			$args += "&bytime="+$('input[name=bus_sort]:checked', '#form_bus').val();
+			$args += "&sort="+$('input[name=bus_sort]:checked', '#bus_form').val();
+			console.log("Sending POST request with args: " + $args);
 			jQuery.ajax({
-	      		type: "POST",
-				url: "submit_bus.php",
-				data: $args,
+	      		type:     "POST",
+				url:      "submit_bus.php",
+				data:     $args,
 				dataType: "html",
-				success: function(result) {
+				cache:    false,
+				success:  function(result) {
 					//submitState(true);
 					$.mobile.hidePageLoadingMsg();
 					if (result.substr(0,6) == "ERROR:") {
@@ -18,7 +20,7 @@ $(document).on("pageshow", "#bus", function() {
 						listError('#bus_list', result.substr(6));
 					} else {
 						// Good results - create and show list
-						if ($('input[name=bus_sort]:checked', '#bus_form').val() == 1) {
+						if ($('input[name=bus_sort]:checked', '#bus_form').val() == "time") {
 							listBusResults_Time("#bus_list",result);
 						} else {
 							listBusResults_Route("#bus_list",result);
@@ -54,20 +56,19 @@ function listBusResults_Route (div, json) {
 function listBusResults_Time (div, json) {
 	var results = jQuery.parseJSON(json);
 	$(div).html("");
-	var str = '<li data-role="divider">Results</li>';
+	var str = '<li data-role="list-divider">Results</li>';
 	for (entry in results) {
 		str += '<li>';
-		str += '<h3>' + entry['Arrival_time'] + '</h3>';
-		str += '<p>Arrival at: ' + entry['Route_short_name'] + ' - ' + entry['Route_long_name'] + '</p>';
+		str += '<h3>' + results[entry]['Arrival_time'] + '</h3>';
+		str += '<p>Route: ' + results[entry]['Route_short_name'] + ' - ' + results[entry]['Route_long_name'] + '</p>';
 		str += '</li>';
 	}
 	$(div).html(str);
 	$(div).listview('refresh');
-	alert(str);
 }
 
 function listError (div, reason) {
-	var str = '<li data-role="divider">Error</li>';
+	var str = '<li data-role="list-divider">Error</li>';
 	str += '<li>' + reason + '</li>';
 	$(div).html(str);
 	$(div).listview('refresh');

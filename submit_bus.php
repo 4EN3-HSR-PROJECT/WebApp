@@ -1,8 +1,8 @@
 <?php
 
 // Get submitted variables
-$stop   = (isset($_REQUEST['stop']))   ? $_REQUEST['stop']   : "";
-$bytime = (isset($_REQUEST['bytime'])) ? $_REQUEST['bytime'] : 0;
+$stop = (isset($_REQUEST['stop'])) ? $_REQUEST['stop'] : "";
+$sort = (isset($_REQUEST['sort'])) ? $_REQUEST['sort'] : "route";
 
 // Ensure that stop code is of sufficient length
 if (strlen($stop) != 4) {
@@ -28,10 +28,10 @@ switch (intval(date('N'))) {
 		$sid = '1_merged_801259';
 		break;
 }
-if ($bytime == 1) {
+if ($sort == "time") {
 	$group1 = "Arrival_time";
 	$group2 = "Route_Short_name";
-} else {
+} else /*($sort == "route")*/ {
 	$group1 = "Route_Short_name";
 	$group2 = "Arrival_time";
 }
