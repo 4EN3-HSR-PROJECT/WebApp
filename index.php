@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.js"></script>
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
-	<script src="js/jquery.validate.js"></script>
-	<script src="js/toolbar.js"></script>
+	<meta charset="utf-8">																			<!-- Character set -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">							<!-- Mobile setup -->
+	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>									<!-- jQuery -->
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.js"></script>				<!-- jQuery Mobile -->
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">	<!-- jQuery Mobile stylesheet -->
+	<script src="js/jquery.validate.js"></script>													<!-- jQuery validation plugin -->
+	<script src="js/toolbar.js"></script>															<!-- Toolbar fix -->
 </head>
 
 
