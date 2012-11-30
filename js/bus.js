@@ -1,44 +1,52 @@
+var bus_submitted;
+
+$(document).ready(function() {
+	bus_submitted = false;
+});
+
 $(document).on("pageshow", "#bus", function() {
-	var bus_submitted = false;
-	
 	//Form submission
 	$("#bus_form").validate({
 		submitHandler: function(form) {
-			//$('#bus_popup').popup();
-			$.mobile.showPageLoadingMsg();
-			$args  =  "stop="+$('#stop').val();
-			$args += "&sort="+$('input[name=bus_sort]:checked', '#bus_form').val();
-			jQuery.ajax({
-	      		type:     "POST",
-				url:      "submit_bus.php",
-				data:     $args,
-				dataType: "html",
-				cache:    false,
-				success:  function(result) {
-					//submitState(true);
-					$.mobile.hidePageLoadingMsg();
-					if (result.substr(0,6) == "ERROR:") {
-						// Error in results
-						listError('#bus_list', result.substr(6));
-					} else {
-						// Good results - create and show list
-						bus_submitted = true;
-						if ($('input[name=bus_sort]:checked', '#bus_form').val() == "time") {
-							listBusResults_Time("#bus_list",result);
-						} else {
-							listBusResults_Route("#bus_list",result);
-						}
-					}
-				},
-				error: function(e){
-					$.mobile.hidePageLoadingMsg();
-					alert('Error: ' + e);
-				} 
-			});	
+			busFormSubmit();
 		}
 	});
 
 });
+
+function busFormSubmit () {
+	$.mobile.showPageLoadingMsg();
+	$args  =  "stop="+$('#stop').val();
+	$args += "&sort="+$('input[name=bus_sort]:checked', '#bus_form').val();
+	jQuery.ajax({
+	   	type:     "POST",
+		url:      "submit_bus.php",
+		data:     $args,
+		dataType: "html",
+		cache:    false,
+		success:  function(result) {
+			//submitState(true);
+			$.mobile.hidePageLoadingMsg();
+			if (result.substr(0,6) == "ERROR:") {
+				// Error in results
+				bus_submitted = false;
+				listError('#bus_list', result.substr(6));
+			} else {
+				// Good results - create and show list
+				bus_submitted = true;
+				if ($('input[name=bus_sort]:checked', '#bus_form').val() == "time") {
+					listBusResults_Time("#bus_list",result);
+				} else {
+					listBusResults_Route("#bus_list",result);
+				}
+			}
+		},
+		error: function(e){
+			$.mobile.hidePageLoadingMsg();
+			alert('Error: ' + e);
+		} 
+	});
+}
 
 function listBusResults_Route (div, json) {
 	var results = jQuery.parseJSON(json);
@@ -87,3 +95,9 @@ function submitState (submitted) {
    	submitted ? $('#bus_submit').attr('disabled', 'disabled') : $('#submit').removeAttr('disabled');
 	$('#bus_submit').button('refresh');
 };
+
+function changeBusSort () {
+	if (bus_submitted) {
+		busFormSubmit();
+	}
+}

@@ -69,15 +69,15 @@ if (!$connected) {
 }
 
 // Perform main query
-$result = mysql_query($query);
-if (!$result) {
+$sqlResult = mysql_query($query);
+if (!$sqlResult) {
 	$result = (isset($result)) ? $result : "ERROR:An error has occurred! Please try again later.";
 	die('Could not run query: ' . mysql_error());
 }
 
 // Get results
 $max_count = 3;
-while ($row = mysql_fetch_assoc($result)) {
+while ($row = mysql_fetch_assoc($sqlResult)) {
 	// Only add up to $max_count entires per route
 	$count[$row['Route_short_name']] = (isset($count[$row['Route_short_name']])) ? $count[$row['Route_short_name']] + 1 : 1;
 	if ($count[$row['Route_short_name']] <= $max_count) {
@@ -94,8 +94,8 @@ if (isset($stops)) {
 
 if (isset($_GET['echo'])) {
 	print_r($result);
+} else {
+	echo $result;
 }
-
-echo $result;
 
 ?>
