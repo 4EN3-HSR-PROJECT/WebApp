@@ -7,13 +7,13 @@
 <script type="text/javascript" src="js/bus.js"></script>
 
 <div style="background: url(WebAppBg.jpg) black no-repeat scroll left top; background-size: cover;" id="bus" data-url="bus" data-role="page" data-theme="a">
-<div data-role="header">
+<div data-role="header" data-position="fixed" data-id="globalnav">
 <h1>Find a Bus</h1>
-<div data-role="navbar">
+<div data-role="navbar" name="bus_nav" id="bus_nav">
 <ul>
-<li><a href="#bus" class="ui-btn-active">Bus</a></li>
-<li><a href="#main">Information</a></li>
-<li><a href="#taxi">Taxi</a></li>
+<li><a href="#bus" id="bus_nav_bus" onClick="setToolbars('bus');" class="ui-btn-active">Bus</a></li>
+<li><a href="#main" id="bus_nav_main" onClick="setToolbars('main');">Information</a></li>
+<li><a href="#taxi" id="bus_nav_taxi" onClick="setToolbars('taxi');">Taxi</a></li>
 </ul>
 </div>
 

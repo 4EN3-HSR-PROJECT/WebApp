@@ -9,6 +9,7 @@
 <!--script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script-->
 <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.js"></script>
 <script src="js/jquery.validate.js"></script>
+<script src="js/toolbar.js"></script>
 <link rel="stylesheet" href="jquery.mobile-1.1.0.custom.css?" />
 
 </head>
@@ -17,13 +18,13 @@
 <body>
 
 <div style="background: url(WebAppBg.jpg) black no-repeat scroll center top;background-size: cover;" id="main" data-url="main" data-role="page" data-theme="a">
-<div data-role="header">
+<div data-role="header" data-position="fixed" data-id="globalnav">
 <h1>HSR Tracker</h1>
-<div data-role="navbar">
+<div data-role="navbar" name="main_nav" id="main_nav">
 <ul>
-<li><a href="#bus">Bus</a></li>
-<li><a href="#main" class="ui-btn-active">Information</a></li>
-<li><a href="#taxi">Taxi</a></li>
+<li><a href="#bus" id="main_nav_bus" onClick="setToolbars('bus');">Bus</a></li>
+<li><a href="#main" id="main_nav_main" onClick="setToolbars('main');" class="ui-btn-active">Information</a></li>
+<li><a href="#taxi" id="main_nav_taxi" onClick="setToolbars('taxi');">Taxi</a></li>
 </ul>
 </div>
 
