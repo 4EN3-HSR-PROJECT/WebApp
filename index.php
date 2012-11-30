@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css">
-<!--script src="http://code.jquery.com/jquery-1.7.1.min.js"></script-->
-<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
-<!--script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script-->
-<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.js"></script>
-<script src="js/jquery.validate.js"></script>
-<script src="js/toolbar.js"></script>
-<link rel="stylesheet" href="jquery.mobile-1.1.0.custom.css?" />
-
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">
+	<script src="js/jquery.validate.js"></script>
+	<script src="js/toolbar.js"></script>
 </head>
 
 
