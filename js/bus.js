@@ -1,11 +1,13 @@
 $(document).on("pageshow", "#bus", function() {
+	var bus_submitted = false;
+	
+	//Form submission
 	$("#bus_form").validate({
 		submitHandler: function(form) {
 			//$('#bus_popup').popup();
 			$.mobile.showPageLoadingMsg();
 			$args  =  "stop="+$('#stop').val();
 			$args += "&sort="+$('input[name=bus_sort]:checked', '#bus_form').val();
-			console.log("Sending POST request with args: " + $args);
 			jQuery.ajax({
 	      		type:     "POST",
 				url:      "submit_bus.php",
@@ -20,6 +22,7 @@ $(document).on("pageshow", "#bus", function() {
 						listError('#bus_list', result.substr(6));
 					} else {
 						// Good results - create and show list
+						bus_submitted = true;
 						if ($('input[name=bus_sort]:checked', '#bus_form').val() == "time") {
 							listBusResults_Time("#bus_list",result);
 						} else {
