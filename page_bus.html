@@ -29,9 +29,9 @@
 </div>
 
 <fieldset data-role="controlgroup" data-type="horizontal">
-	<input type="radio" name="bus_sort" id="bus_sort-route" value="route" checked />
+	<input type="radio" name="bus_sort" id="bus_sort-route" value="route" onChange="changeBusSort();" checked />
 	<label for="bus_sort-route">By Route</label>
-	<input type="radio" name="bus_sort" id="bus_sort-time" value="time" />
+	<input type="radio" name="bus_sort" id="bus_sort-time" value="time" onChange="changeBusSort();" />
 	<label for="bus_sort-time">By Time</label>
 </fieldset>
 
