@@ -30,9 +30,9 @@
 
 <div data-role="content">
 The HSR Bus Tracker app uses realtime GPS information to compile an accurate bus schedule based on actual bus positions.
-<a href="#bus" data-role="button" data-theme="b">Find a Bus</a>
+<a href="#bus" onClick="setToolbars('bus');" data-role="button" data-theme="b">Find a Bus</a>
 Is your bus running late? Request a taxi to pick you up without making a single phone call!
-<a href="#taxi" data-role="button" data-theme="b">Request a Taxi</a>
+<a href="#taxi" onClick="setToolbars('taxi');" data-role="button" data-theme="b">Request a Taxi</a>
 <?php include 'bulletin.php' ?>
 
 </div></div>
