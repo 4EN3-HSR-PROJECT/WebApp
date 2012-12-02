@@ -22,7 +22,6 @@
 
 
 <ul data-role="listview" data-inset="true" name="bulletin" id="bulletin" data-theme="c">
-	<li data-role="list-divider">Announcements</li>
 	<?php foreach ($bulletin as $entry) {
 		$title			= (isset($entry['title']))			? $entry['title']		: '';
 		$link			= (isset($entry['link']))			? $entry['link']		: '';
