@@ -17,15 +17,14 @@
 
 <div style="background: url(bg.jpg) black no-repeat scroll center top;background-size: cover;" id="main" data-url="main" data-role="page" data-theme="a">
 <div data-role="header" data-position="fixed" data-id="globalnav">
-<h1>HSR Tracker</h1>
-<div data-role="navbar" name="main_nav" id="main_nav">
-<ul>
-<li><a href="#bus" id="main_nav_bus" onClick="setToolbars('bus');">Bus</a></li>
-<li><a href="#main" id="main_nav_main" onClick="setToolbars('main');" class="ui-btn-active">Information</a></li>
-<li><a href="#taxi" id="main_nav_taxi" onClick="setToolbars('taxi');">Taxi</a></li>
-</ul>
-</div>
-
+	<h1>HSR Tracker</h1>
+	<!--div data-role="navbar" name="main_nav" id="main_nav">
+		<ul>
+		<li><a href="#bus" id="main_nav_bus" onClick="setToolbars('bus');">Bus</a></li>
+		<li><a href="#main" id="main_nav_main" onClick="setToolbars('main');" class="ui-btn-active">Information</a></li>
+		<li><a href="#taxi" id="main_nav_taxi" onClick="setToolbars('taxi');">Taxi</a></li>
+		</ul>
+	</div-->
 </div>
 
 <div data-role="content">
@@ -33,10 +32,12 @@ The HSR Bus Tracker app uses realtime GPS information to compile an accurate bus
 <a href="#bus" onClick="setToolbars('bus');" data-role="button" data-theme="b">Find a Bus</a>
 Is your bus running late? Request a taxi to pick you up without making a single phone call!
 <a href="#taxi" onClick="setToolbars('taxi');" data-role="button" data-theme="b">Request a Taxi</a>
-<?php include 'bulletin.php' ?>
+Looking for the latest news and events in Hamilton? Be sure to read the announcements.
+<a href="#bulletin" onClick="setToolbars('bulletin');" data-role="button" data-theme="b">Announcements</a>
 
 </div></div>
 
+<?php include 'bulletin.php' ?>
 <?php include 'page_bus.html' ?>
 <?php include 'page_taxi.html' ?>
 
