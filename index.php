@@ -17,7 +17,7 @@
 
 <div style="background: url(bg.jpg) black no-repeat scroll center top;background-size: cover;" id="main" data-url="main" data-role="page" data-theme="a">
 	<div data-role="header" data-position="fixed" data-id="globalnav">
-		<h1>HSR Tracker</h1>
+		<h1>CachaBus</h1>
 		<!--div data-role="navbar" name="main_nav" id="main_nav">
 			<ul>
 			<li><a href="#bus" id="main_nav_bus" onClick="setToolbars('bus');">Bus</a></li>
@@ -28,7 +28,7 @@
 	</div>
 
 	<div data-role="content">
-		The HSR Bus Tracker app uses realtime GPS information to compile an accurate bus schedule based on actual bus positions.
+		CachaBus uses realtime GPS information to compile an accurate bus schedule based on actual bus positions.
 		<div data-role="controlgroup">
 			<a href="#bus" onClick="setToolbars('bus');" data-role="button" data-theme="b">Find a Bus</a>
 			<a href="#bulletin" onClick="setToolbars('bulletin');" data-role="button" data-theme="b">Bulletin Board</a>
