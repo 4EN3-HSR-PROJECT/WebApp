@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<entry>
+		<title>Blah Blah and the Blahs</title>
+		<url></url>
+		<published>December 5 2012</published>
+		<content>This event will feature Blah Blah and the Blahs who will be performing Blah! Does that sound fun or what?</content>
+	</entry>
+	<entry>
+		<title>Tim Horton's</title>
+		<url></url>
+		<published>December 9 2012</published>
+		<content>Tim Horton's if offering half-price coffee for one day only!</content>
+	</entry>
+	<entry>
+		<title>Generic Event</title>
+		<url></url>
+		<published>December 10 2012</published>
+		<content>This is a description on the event. This event will feature Blah Blah and the Blahs who will be performing Blah! Does that sound fun or what?</content>
+	</entry>
+	<entry>
+		<title>Muse Comes To Copp's</title>
+		<url></url>
+		<published>December 12 2012</published>
+		<content>Muse will be playing at Copp's Colluseum on December 12. Don't miss it!</content>
+	</entry>
+	<entry>
+		<title>Christmas</title>
+		<url></url>
+		<published>December 25 2012</published>
+		<content>Merry Christmas everyone!</content>
+	</entry>
+	<entry>
+		<title>Boxing Day Specials</title>
+		<url></url>
+		<published>December 26 2012</published>
+		<content>Save up to 80% at Blah Blah's Department Store! Sales are for one-day only and stock is limited so arrive early.</content>
+	</entry>
+</feed>
