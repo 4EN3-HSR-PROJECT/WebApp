@@ -38,8 +38,8 @@
 	</div>
 </div>
 
-<?php include 'bulletin.php' ?>
 <?php include 'page_bus.html' ?>
+<?php include 'page_bulletin.php' ?>
 <?php include 'page_taxi.html' ?>
 
 </body>
