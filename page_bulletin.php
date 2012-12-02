@@ -10,7 +10,7 @@
 
 <div style="background: url(bg.jpg) black no-repeat scroll center top;background-size: cover;" id="bulletin" data-url="bulletin" data-role="page" data-theme="a">
 <div data-role="header" data-position="fixed" data-id="globalnav">
-	<h1>Announcements</h1>
+	<h1>Bulletin Board</h1>
 	<div data-role="navbar" name="bulletin_nav" id="bulletin_nav">
 		<ul>
 		<li><a href="#bus" id="bulletin_nav_bus" onClick="setToolbars('bus');">Bus</a></li>

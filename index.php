@@ -27,7 +27,7 @@
 		</div-->
 	</div>
 
-	<div data-role="content">
+	<div data-role="content" style="text-align:justify;">
 		CachaBus uses realtime GPS information to compile an accurate bus schedule based on actual bus positions.
 		<div data-role="controlgroup">
 			<a href="#bus" onClick="setToolbars('bus');" data-role="button" data-theme="b">Find a Bus</a>
