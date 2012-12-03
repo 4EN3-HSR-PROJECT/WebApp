@@ -44,4 +44,8 @@
 	}?>
 </ul>
 
+<div data-role="footer" data-id="ad" data-position="fixed" name="bulletin_ad" id="bulletin_ad">
+	<!-- Random ad will be inserted here -->
+</div>
+
 </div>

@@ -15,6 +15,7 @@
 <body>
 
 <?php include 'splash.php' ?>
+<script>updateAds();</script>
 
 <div style="background: url(bg.jpg) black no-repeat scroll center top;background-size: cover;" id="main" data-url="main" data-role="page" data-theme="a">
 	<div data-role="header" data-position="fixed" data-id="globalnav">
