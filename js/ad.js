@@ -7,5 +7,5 @@ function updateAds()
 	var rand = Math.floor(Math.random() * ads.length) + 1;
 	$("#bus_ad").html('<img src="' + ads[rand] + '" border=0>');
 	$("#bulletin_ad").html('<img src="' + ads[rand] + '" border=0>');
-	$("#taxi_ad").html('<img src="' + ads[rand] + '" border=0>');
+	$("#taxi_ad").html('<img src="' + ads[rand] + '" border=0 width="100%">');
 }
