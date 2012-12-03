@@ -51,7 +51,7 @@
 		$date = strtotime($item->get_date());
 		if ($date > time()) {
 			echo "<li>";
-			echo "<a href=\"{$item->get_link()}\">";
+			echo "<a href=\"{$item->get_link()}\" target=\"_blank\">";
 			//echo "<img src=\"$image\" />";
 			echo "<h3>{$item->get_title()}</h3>";
 			echo "<p><b>{$item->get_date('j F Y @ g:i a')}</b></p>";
