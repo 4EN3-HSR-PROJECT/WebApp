@@ -1,5 +1,8 @@
 <?php
 
+$offset = -9 * 60 * 60;
+$schedule_overflow = 2.5 * 60 * 60; // How far past midnight the schedule goes before starting a new day
+
 // Get submitted variables
 $stop = (isset($_REQUEST['stop'])) ? $_REQUEST['stop'] : "";
 $sort = (isset($_REQUEST['sort'])) ? $_REQUEST['sort'] : "route";
@@ -25,7 +28,7 @@ if (strpos($stop,'0') === 0) {
 }
 
 // Set query variables
-switch (intval(date('N'))) {
+switch (intval(date('N', time() - $offset - $schedule_overflow))) {
 	case 6: // Saturday
 		$sid = '2_merged_801261';
 		break;
@@ -92,7 +95,7 @@ while ($row = mysql_fetch_assoc($sqlResult)) {
 	$count[$row['Route_short_name']] = (isset($count[$row['Route_short_name']])) ? $count[$row['Route_short_name']] + 1 : 1;
 	if ($count[$row['Route_short_name']] <= $max_count) {
 		$data = $row;
-		$currenttime = time() - (9 * 60 * 60); // 9 hours offset
+		$currenttime = time() + $offset; // 9 hours offset
 		$timestamp = strtotime($row['Arrival_time'], $currenttime);
 		$data['Arrival_time'] = date ( 'g:i a', $timestamp);
 		if ($timestamp - $currenttime < 900) {
