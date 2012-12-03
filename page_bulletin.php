@@ -5,7 +5,15 @@
 -->
 
 
-<?php include 'bulletin/contents.php' ?>
+<!--?php include 'bulletin/contents.php' ?-->
+<?php
+	require_once('simplepie_1.3.1.php');
+	$feed = new SimplePie();
+	$feed->enable_order_by_date();
+	$feed->set_feed_url('http://www.hecfi.ca/index.php?option=com_rd_rss&id=3');
+	$feed->init();
+	$feed->handle_content_type();
+?>
 
 
 <div style="background: url(bg.jpg) black no-repeat scroll center top;background-size: cover;" id="bulletin" data-url="bulletin" data-role="page" data-theme="a">
@@ -22,7 +30,7 @@
 
 
 <ul data-role="listview" data-inset="true" name="bulletin" id="bulletin" data-theme="c">
-	<?php foreach ($bulletin as $entry) {
+	<!--?php foreach ($bulletin as $entry) {
 		$title			= (isset($entry['title']))			? $entry['title']		: '';
 		$link			= (isset($entry['link']))			? $entry['link']		: '';
 		$image			= (isset($entry['image']))			? $entry['image']		: 'bulletin/default.png';
@@ -38,6 +46,16 @@
 			echo "</a>";
 			echo "</li>";
 		}
+	}?-->
+	<?php foreach ($feed->get_items() as $item) {
+		echo "<li>";
+		echo "<a href=\"{$item->get_link()}\">";
+		//echo "<img src=\"$image\" />";
+		echo "<h3>{$item->get_title()}</h3>";
+		echo "<p><b>{$item->get_date('j F Y @ g:i a')}</b></p>";
+		echo "<p style=\"white-space: normal;\">{$item->get_description()}</p>";
+		echo "</a>";
+		echo "</li>";
 	}?>
 </ul>
 
