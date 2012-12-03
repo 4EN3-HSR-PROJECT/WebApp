@@ -1,7 +1,7 @@
 <?php
 
 $offset = -9 * 60 * 60;
-$schedule_overflow = 2.5 * 60 * 60; // How far past midnight the schedule goes before starting a new day
+$schedule_overflow = -2.5 * 60 * 60; // How far past midnight the schedule goes before starting a new day
 
 // Get submitted variables
 $stop = (isset($_REQUEST['stop'])) ? $_REQUEST['stop'] : "";
@@ -28,7 +28,7 @@ if (strpos($stop,'0') === 0) {
 }
 
 // Set query variables
-switch (intval(date('N', time() - $offset - $schedule_overflow))) {
+switch (intval(date('N', time() + $offset + $schedule_overflow))) {
 	case 6: // Saturday
 		$sid = '2_merged_801261';
 		break;
