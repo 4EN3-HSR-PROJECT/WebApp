@@ -4,7 +4,7 @@ function updateAds()
 	ads[1] = "ads/subAd.jpg";
 	ads[2] = "ads/timAd.jpg";
 	ads[3] = "ads/beerStoreAd.jpg";
-	var rand = Math.floor(Math.random() * ads.length) + 1;
+	var rand = Math.floor(Math.random() * (ads.length+1));
 	$("#bus_ad").html('<img src="' + ads[rand] + '" border=0 width="100%">');
 	$("#bulletin_ad").html('<img src="' + ads[rand] + '" border=0 width="100%">');
 	$("#taxi_ad").html('<img src="' + ads[rand] + '" border=0 width="100%">');
