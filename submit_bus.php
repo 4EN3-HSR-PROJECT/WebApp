@@ -91,7 +91,14 @@ while ($row = mysql_fetch_assoc($sqlResult)) {
 	// Only add up to $max_count entires per route
 	$count[$row['Route_short_name']] = (isset($count[$row['Route_short_name']])) ? $count[$row['Route_short_name']] + 1 : 1;
 	if ($count[$row['Route_short_name']] <= $max_count) {
-		$stops[] = $row;
+		$data = $row;
+		$currenttime = time() - (9 * 60 * 60); // 9 hours offset
+		$timestamp = strtotime($row['Arrival_time'], $currenttime);
+		$data['Arrival_time'] = date ( 'g:i a', $timestamp);
+		if ($timestamp - $currenttime < 600) {
+			$data['Arrival_time'] .= ' - <font color="#aaaaaa">' . round(($timestamp - $currenttime)/60) . ' min</font>';
+		}
+		$stops[] = $data;
 	}
 }
 
