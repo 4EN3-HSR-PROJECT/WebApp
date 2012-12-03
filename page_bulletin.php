@@ -22,7 +22,7 @@
 	<div data-role="navbar" name="bulletin_nav" id="bulletin_nav">
 		<ul>
 		<li><a href="#bus" id="bulletin_nav_bus" onClick="setToolbars('bus');">Bus</a></li>
-		<li><a href="#main" id="bulletin_nav_bulletin" onClick="setToolbars('bulletin');" class="ui-btn-active">Bulletin</a></li>
+		<li><a href="#bulletin" id="bulletin_nav_bulletin" onClick="setToolbars('bulletin');" class="ui-btn-active">Bulletin</a></li>
 		<li><a href="#taxi" id="bulletin_nav_taxi" onClick="setToolbars('taxi');">Taxi</a></li>
 		</ul>
 	</div>
@@ -47,15 +47,18 @@
 			echo "</li>";
 		}
 	}?-->
-	<?php foreach ($feed->get_items() as $item) {
-		echo "<li>";
-		echo "<a href=\"{$item->get_link()}\">";
-		//echo "<img src=\"$image\" />";
-		echo "<h3>{$item->get_title()}</h3>";
-		echo "<p><b>{$item->get_date('j F Y @ g:i a')}</b></p>";
-		echo "<p style=\"white-space: normal;\">{$item->get_description()}</p>";
-		echo "</a>";
-		echo "</li>";
+	<?php foreach (array_reverse($feed->get_items()) as $item) {
+		$date = strtotime($item->get_date());
+		if ($date > time()) {
+			echo "<li>";
+			echo "<a href=\"{$item->get_link()}\">";
+			//echo "<img src=\"$image\" />";
+			echo "<h3>{$item->get_title()}</h3>";
+			echo "<p><b>{$item->get_date('j F Y @ g:i a')}</b></p>";
+			echo "<p style=\"white-space: normal;\">{$item->get_description()}</p>";
+			echo "</a>";
+			echo "</li>";
+		}
 	}?>
 </ul>
 
