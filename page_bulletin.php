@@ -36,7 +36,7 @@
 			echo "<a href=\"{$item->get_link()}\" target=\"_blank\">";
 			//echo "<img src=\"$image\" />";
 			echo "<h3>{$item->get_title()}</h3>";
-			echo "<p><b>{$item->get_date('L F j, Y')}</b></p>";
+			echo "<p><b>{$item->get_date('l F j, Y')}</b></p>";
 			echo "<p style=\"white-space: normal;\">{$item->get_description()}</p>";
 			echo "</a>";
 			echo "</li>";
