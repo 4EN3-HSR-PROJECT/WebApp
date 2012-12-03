@@ -8,4 +8,5 @@ function updateAds()
 	$("#bus_ad").html('<img src="' + ads[rand] + '" border=0 width="100%">');
 	$("#bulletin_ad").html('<img src="' + ads[rand] + '" border=0 width="100%">');
 	$("#taxi_ad").html('<img src="' + ads[rand] + '" border=0 width="100%">');
+	setTimeout ('updateAds()', 30000);
 }
