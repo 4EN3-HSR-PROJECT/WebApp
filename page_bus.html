@@ -12,7 +12,7 @@
 <div data-role="navbar" name="bus_nav" id="bus_nav">
 <ul>
 <li><a href="#bus" id="bus_nav_bus" onClick="setToolbars('bus');" class="ui-btn-active">Bus</a></li>
-<li><a href="#bulletin" id="bus_nav_bulletin" onClick="setToolbars('bulletin');">Announcements</a></li>
+<li><a href="#bulletin" id="bus_nav_bulletin" onClick="setToolbars('bulletin');">Bulletin</a></li>
 <li><a href="#taxi" id="bus_nav_taxi" onClick="setToolbars('taxi');">Taxi</a></li>
 </ul>
 </div>
@@ -24,8 +24,8 @@
 <form data-ajax="true" name="bus_form" action="" method="POST" id="bus_form">
 
 <div data-role="fieldcontain">
-	<label for="stop" class="ui-hidden-accessible">Stop Number:</label>
-	<input type="text" class="required" minlength="4" maxlength="4" name="stop" id="stop" placeholder="Stop Number" />
+	<label for="stop"><b>Stop Number:</b></label>
+	<input type="number" class="required" minlength="4" maxlength="4" name="stop" id="stop" placeholder="Stop Number" />
 </div>
 
 <fieldset data-role="controlgroup" data-type="horizontal">
@@ -49,18 +49,18 @@
 
 <center>
 <script language="JavaScript">
-function random_ads()
-{
-var ads=new Array()
-ads[1]="ads/subAd.jpg"
-ads[2]="ads/timAd.jpg"
-ads[3]="ads/beerStoreAd.jpg"
+	function random_ads()
+	{
+		var ads=new Array()
+		ads[1]="ads/subAd.jpg"
+		ads[2]="ads/timAd.jpg"
+		ads[3]="ads/beerStoreAd.jpg"
 
-var ry=Math.floor(Math.random()*ads.length)
-if (ry==0)
-ry=1
-document.write('<img src="'+ads[ry]+'" border=0>')
-}
+		var ry=Math.floor(Math.random()*ads.length)
+		if (ry==0)
+		ry=1
+		document.write('<img src="'+ads[ry]+'" border=0>')
+	}
 random_ads()
 </script>
 </center>
