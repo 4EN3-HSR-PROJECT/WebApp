@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css">	<!-- jQuery Mobile stylesheet -->
 	<script src="js/jquery.validate.js"></script>													<!-- jQuery validation plugin -->
 	<script src="js/toolbar.js"></script>															<!-- Toolbar fix -->
+	<script src="js/ad.js"></script>																<!-- Ad implementation -->
 </head>
 
 
