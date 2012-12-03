@@ -96,7 +96,7 @@ while ($row = mysql_fetch_assoc($sqlResult)) {
 		$timestamp = strtotime($row['Arrival_time'], $currenttime);
 		$data['Arrival_time'] = date ( 'g:i a', $timestamp);
 		if ($timestamp - $currenttime < 600) {
-			$data['Arrival_time'] .= ' - <font color="#aaaaaa">' . round(($timestamp - $currenttime)/60) . ' min</font>';
+			$data['Arrival_time'] .= '<font color="#aaaaaa"> - ' . round(($timestamp - $currenttime)/60) . ' min</font>';
 		}
 		$stops[] = $data;
 	}
