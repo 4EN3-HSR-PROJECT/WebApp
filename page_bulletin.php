@@ -5,7 +5,6 @@
 -->
 
 
-<!--?php include 'bulletin/contents.php' ?-->
 <?php
 	require_once('simplepie_1.3.1.php');
 	$feed = new SimplePie();
@@ -30,23 +29,6 @@
 
 
 <ul data-role="listview" data-inset="true" name="bulletin" id="bulletin" data-theme="c">
-	<!--?php foreach ($bulletin as $entry) {
-		$title			= (isset($entry['title']))			? $entry['title']		: '';
-		$link			= (isset($entry['link']))			? $entry['link']		: '';
-		$image			= (isset($entry['image']))			? $entry['image']		: 'bulletin/default.png';
-		$date			= (isset($entry['date']))			? $entry['date']		: '';
-		$description	= (isset($entry['description']))	? $entry['description']	: '';
-		if (strlen($title) >= 1) {
-			echo "<li>";
-			echo "<a href=\"$link\">";
-			echo "<img src=\"$image\" />";
-			echo "<h3>$title</h3>";
-			echo "<p><b>$date</b></p>";
-			echo "<p style=\"white-space: normal;\">$description</p>";
-			echo "</a>";
-			echo "</li>";
-		}
-	}?-->
 	<?php foreach (array_reverse($feed->get_items()) as $item) {
 		$date = strtotime($item->get_date());
 		if ($date > time()) {
