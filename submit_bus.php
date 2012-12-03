@@ -95,8 +95,8 @@ while ($row = mysql_fetch_assoc($sqlResult)) {
 		$currenttime = time() - (9 * 60 * 60); // 9 hours offset
 		$timestamp = strtotime($row['Arrival_time'], $currenttime);
 		$data['Arrival_time'] = date ( 'g:i a', $timestamp);
-		if ($timestamp - $currenttime < 600) {
-			$data['Arrival_time'] .= '<font color="#aaaaaa"> - ' . round(($timestamp - $currenttime)/60) . ' min</font>';
+		if ($timestamp - $currenttime < 900) {
+			$data['Arrival_time'] .= '<font color="#aaaaaa"> (' . round(($timestamp - $currenttime)/60) . ' min)</font>';
 		}
 		$stops[] = $data;
 	}
