@@ -31,6 +31,7 @@ iosocket.on('connect', function() {
 function showSummaryInfo(message) {
         $("#statPage").hide();
         $("#summary").show();
+        $('#summary').remove();
         $('#summary').append("<b>Name : " + message.name + "</b><br /><br />");
         $args = "timeOfAcceptance="+message.timeOfAcceptance + "&distance=" + message.distance + "&timeOfSubmission=" + message.timeOfSubmission;
         jQuery.ajax({
