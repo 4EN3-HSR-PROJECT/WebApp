@@ -6,7 +6,7 @@
 
 
 <?php
-	require_once('simplepie_1.3.1.php');
+	require_once("simplepie_1.3.1.php");
 	$feed = new SimplePie();
 	$feed->enable_order_by_date();
 	$feed->set_feed_url('http://www.hecfi.ca/index.php?option=com_rd_rss&id=3');
