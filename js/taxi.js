@@ -1,13 +1,4 @@
 var iosocket = io.connect('http://danesh.it.cx:8080');
-function buildPostString(msg) {
-	var url = 'http://danesh.it.cx/mondegd/passengerSummary.php';
-	var beginning = '<form action="' + url + '" method="post">';
-	var stringBuilder = beginning;
-	for(var h in msg) {
-		stringBuilder += '<input type="text" name="' + h + '" value="' + msg[h] + '" />';
-	}
-	return stringBuilder + '</form>';
-};
 
 iosocket.on('connect', function() {
 	iosocket.emit("joinroom", "passengers");
@@ -16,16 +7,12 @@ iosocket.on('connect', function() {
 	});
 	iosocket.on('requestaccepted', function(message) {
 		$('#block-ui').hide();
-		var url = 'http://danesh.it.cx/mondegd/passengerSummary.php';
-		var form = $(buildPostString(message));
-		$('body').append(form);
-		$(form).submit();
+		showSummaryInfo(message);
 	});
 	iosocket.on('pendingRequest', function(message) {
 		if(message != null && message.driver != undefined) {
-			var form = $(buildPostString(message));
-			$('body').append(form);
-			$(form).submit();
+			$('#block-ui').hide();
+			showSummaryInfo(message);
 		} else if(message != null) {
 			$('#name').val(message.name);
 			$('#phonenumber').val(message.number);
@@ -40,6 +27,27 @@ iosocket.on('connect', function() {
 		}
 	});
 });
+
+function showSummaryInfo(message) {
+        $("#statPage").hide();
+        $("#summary").show();
+        $('#summary').append("<b>Name : " + message.name + "</b><br /><br />");
+        $args = "timeOfAcceptance="+message.timeOfAcceptance + "&distance=" + message.distance + "&timeOfSubmission=" + message.timeOfSubmission;
+        jQuery.ajax({
+                type: "POST",
+                url: "processDate.php",
+                data: $args,
+                dataType: 'json',
+                type : 'POST',
+                success: function(result) {
+                    $('#summary').append("<b>Time of submission : " + result.timeOfSubmission + "</b><br /><br />");
+                    $('#summary').append("<b>Estimated Time Of Arrival : " + result.timeOfAcceptance + "</b><br /><br />");
+                },
+                error: function(e) {
+                    alert('Error: ' + e);
+                }
+        });
+}
 
 function submitRequest() {
 	var name = $('#name').val();
