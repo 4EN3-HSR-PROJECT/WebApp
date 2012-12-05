@@ -29,10 +29,11 @@ iosocket.on('connect', function() {
 });
 
 function showSummaryInfo(message) {
+        $.mobile.loading('hide');
         $("#statPage").hide();
         $("#summary").show();
-        $('#summary').remove();
-        $('#summary').append("<b>Name : " + message.name + "</b><br /><br />");
+        $("#summary").html('');
+        $('#summary').append("<br /><br /><b>  Name : " + message.name + "</b><br /><br />");
         $args = "timeOfAcceptance="+message.timeOfAcceptance + "&distance=" + message.distance + "&timeOfSubmission=" + message.timeOfSubmission;
         jQuery.ajax({
                 type: "POST",
